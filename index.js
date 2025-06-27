@@ -4,7 +4,7 @@ function Book(title, author, pages, read, id) {
   if (!new.target) {
     throw Error('You should use the "new" operator to call the constructor')
   }
-  this.title = title
+  this.title = title 
   this.author = author
   this.pages = pages
   this.read = read
@@ -57,11 +57,23 @@ const addBookToDom = function () {
     const titleData = document.createElement('td')
     titleData.textContent = title
 
+    const actionData = document.createElement('td')
+    const editBtn = document.createElement('button')
+    editBtn.textContent = "Edit"
+    editBtn.classList.add("edit")
+    const deleteBtn = document.createElement('button')
+    deleteBtn.textContent = "Delete"
+    deleteBtn.classList.add("delete")
+    actionData.appendChild(editBtn)
+    actionData.appendChild(deleteBtn)
+    
+
     tableRow.appendChild(idData)
     tableRow.appendChild(titleData)
     tableRow.appendChild(authorData)
     tableRow.appendChild(pagesData)
     tableRow.appendChild(readData)
+    tableRow.appendChild(actionData)
 
     tableBody.appendChild(tableRow)
   })
