@@ -24,18 +24,46 @@ function addBookToLibrary(title, author, pages, read) {
 addBookToLibrary('The Hobbit', 'J.R.R Tolkein', 295, 'not read')
 console.log(myLibrary)
 
+const tableBody = document.querySelector('.table-body')
+const tableRow = document.createElement('tr')
 const renderBook = function () {
-  let container = document.querySelector('.table-container')
-
-  let table = document.createElement('table')
-
   if (!myLibrary.length) {
-    let infoText = document.createElement('p')
-    infoText.textContent = 'There are no books to show yet...'
+    const tableData = document.createElement('td')
+    tableData.textContent = 'There are no books to show yet...'
+    tableRow.appendChild(tableData)
+    tableData.colSpan = '6'
+    tableBody.appendChild(tableRow)
   }
 
-  myLibrary.forEach((book, index) => {
+  addBookToDom()
+}
+
+const addBookToDom = function () {
+  return myLibrary.forEach((book, index) => {
     const { author, id, pages, read, title } = book
+
+    const authorData = document.createElement('td')
+    authorData.textContent = author
+
+    const idData = document.createElement('td')
+    idData.textContent = index + 1
+
+    const pagesData = document.createElement('td')
+    pagesData.textContent = pages
+
+    const readData = document.createElement('td')
+    readData.textContent = read
+
+    const titleData = document.createElement('td')
+    titleData.textContent = title
+
+    tableRow.appendChild(idData)
+    tableRow.appendChild(titleData)
+    tableRow.appendChild(authorData)
+    tableRow.appendChild(pagesData)
+    tableRow.appendChild(readData)
+
+    tableBody.appendChild(tableRow)
   })
 }
 
