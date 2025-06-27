@@ -1,6 +1,6 @@
 const myLibrary = []
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, id) {
   if (!new.target) {
     throw Error('You should use the "new" operator to call the constructor')
   }
@@ -8,15 +8,35 @@ function Book(title, author, pages, read) {
   this.author = author
   this.pages = pages
   this.read = read
-  this.info = function () {
-    return `${this.title} by ${this.author}, ${pages}, ${read} yet.`
-  }
+  this.id = id
+  // this.info = function () {
+  //   return `${this.title} by ${this.author}, ${pages}, ${read} yet.`
+  // }
 }
-
-console.log(theHobbit.info())
 
 function addBookToLibrary(title, author, pages, read) {
-  const theHobbit = new Book('The Hobbit', 'J.R.R Tolkein', 295, 'not read')
-
+  let uuid = crypto.randomUUID()
+  const theHobbit = new Book(title, author, pages, read, uuid)
+  //console.log(theHobbit.info())
   myLibrary.push(theHobbit)
 }
+
+addBookToLibrary('The Hobbit', 'J.R.R Tolkein', 295, 'not read')
+console.log(myLibrary)
+
+const renderBook = function () {
+  let container = document.querySelector('.table-container')
+
+  let table = document.createElement('table')
+
+  if (!myLibrary.length) {
+    let infoText = document.createElement('p')
+    infoText.textContent = 'There are no books to show yet...'
+  }
+
+  myLibrary.forEach((book, index) => {
+    const { author, id, pages, read, title } = book
+  })
+}
+
+renderBook()
