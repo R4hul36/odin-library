@@ -80,3 +80,21 @@ const addBookToDom = function () {
 }
 
 renderBook()
+
+const dialog = document.querySelector("dialog")
+const addBtn = document.querySelector(".add-btn")
+const closeBtn = document.querySelector(".close-btn")
+const form = document.querySelector(".form")
+
+addBtn.addEventListener("click", (e) => {
+  dialog.showModal()
+  
+})
+
+closeBtn.addEventListener("click", () => {
+  dialog.close()
+})
+
+form.addEventListener("submit", (e)=> {
+  e.preventDefault()
+})

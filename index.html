@@ -10,7 +10,29 @@
   <body>
     <h1>My Library</h1>
     <div class="main">
-      <button class="add-book">Add Book</button>
+      <dialog>
+        <h2>Enter your Book details</h2>
+        <form action="" class="form">
+          <label for="title">Book Title</label>
+          <input type="text" id="title" name="title">
+          <label for="author">Author</label>
+          <input type="text" id="author" name="author">
+          <label for="pages">Pages</label>
+          <input type="number" name="pages" id="pages">
+          <label for="read">Did you read this book?</label>
+          <select name="read" id="read">
+            <option value="read">read</option>
+            <option value="not-read">not-read</option>
+            <option value="planning">planning to read</option>
+          </select>
+          <button type="submit">Submit</button>
+        </form>
+
+        <button class="close-btn" autofocus>Close</button>
+        
+      </dialog>
+  
+      <button class="add-btn">Add Book</button>
       <div class="table-container">
         <table>
           <thead>
