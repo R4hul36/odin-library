@@ -23,7 +23,11 @@ function addBookToLibrary(title, author, pages, read) {
 
 let tableBody = document.querySelector('.table-body')
 
-if (myLibrary.length == 0) {
+
+
+const addBookToDom = function () {
+  tableBody.innerHTML = ''
+  if (myLibrary.length == 0) {
   const tableRow = document.createElement('tr')
   const tableData = document.createElement('td')
   tableData.textContent = 'There are no books to show yet...'
@@ -31,13 +35,12 @@ if (myLibrary.length == 0) {
   tableData.colSpan = '6'
   tableBody.appendChild(tableRow)
 }
-
-const addBookToDom = function () {
-  tableBody.innerHTML = ''
+  
 
   return myLibrary.forEach((book, index) => {
-    const tableRow = document.createElement('tr')
     const { author, id, pages, read, title } = book
+
+    const tableRow = document.createElement('tr')
 
     const authorData = document.createElement('td')
     authorData.textContent = author
@@ -58,9 +61,13 @@ const addBookToDom = function () {
     const editBtn = document.createElement('button')
     editBtn.textContent = 'Edit'
     editBtn.classList.add('edit')
+    editBtn.setAttribute('data-book-id', id)
+
     const deleteBtn = document.createElement('button')
     deleteBtn.textContent = 'Delete'
     deleteBtn.classList.add('delete')
+    deleteBtn.setAttribute('data-book-id', id)
+
     actionData.appendChild(editBtn)
     actionData.appendChild(deleteBtn)
 
@@ -97,10 +104,25 @@ form.addEventListener('submit', (e) => {
   const read = formData.get('read')
 
   let uuid = crypto.randomUUID()
-  console.log(title, author, pages, read)
+  // console.log(title, author, pages, read)
   addBookToLibrary(title, author, pages, read, uuid)
   addBookToDom()
-  console.log(myLibrary)
+  dialog.close()
+  form.reset()
+  
 })
-// addBookToDom()
-console.log(myLibrary)
+
+
+// Delete Book
+tableBody.addEventListener('click', (e) => {
+  if (e.target.classList.contains('delete')) {
+    // console.log(e.target); 
+    const bookId = e.target.getAttribute('data-book-id')
+    myLibrary = myLibrary.filter(book => book.id !== bookId);
+    addBookToDom()
+    
+  }
+});
+
+
+
