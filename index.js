@@ -34,8 +34,9 @@ if (myLibrary.length == 0) {
 
 const addBookToDom = function () {
   tableBody.innerHTML = ''
-  const tableRow = document.createElement('tr')
+
   return myLibrary.forEach((book, index) => {
+    const tableRow = document.createElement('tr')
     const { author, id, pages, read, title } = book
 
     const authorData = document.createElement('td')
