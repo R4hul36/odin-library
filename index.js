@@ -34,7 +34,7 @@ const addBookToDom = function () {
   tableRow.appendChild(tableData)
   tableData.colSpan = '6'
   tableBody.appendChild(tableRow)
-}
+  } 
   
 
   return myLibrary.forEach((book, index) => {
@@ -81,6 +81,7 @@ const addBookToDom = function () {
     tableBody.appendChild(tableRow)
   })
 }
+addBookToDom()
 
 const dialog = document.querySelector('dialog')
 const addBtn = document.querySelector('.add-btn')
@@ -113,15 +114,29 @@ form.addEventListener('submit', (e) => {
 })
 
 
-// Delete Book
+
 tableBody.addEventListener('click', (e) => {
+  const bookId = e.target.getAttribute('data-book-id')
+  // Delete Book
   if (e.target.classList.contains('delete')) {
     // console.log(e.target); 
-    const bookId = e.target.getAttribute('data-book-id')
     myLibrary = myLibrary.filter(book => book.id !== bookId);
     addBookToDom()
     
   }
+
+  //edit book
+  if (e.target.classList.contains('edit')) {
+    
+    console.log(e.target);
+    const {title, author, pages, read, id} = myLibrary.filter(book => book.id === bookId)[0]
+    document.querySelector('#title').value = title;
+    document.querySelector('#author').value = author;
+    document.querySelector('#pages').value = pages;
+    document.querySelector('#read').value = read
+    dialog.showModal()
+  }
+
 });
 
 
