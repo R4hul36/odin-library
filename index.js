@@ -9,9 +9,7 @@ function Book(title, author, pages, read, id) {
   this.pages = pages
   this.read = read
   this.id = id
-  // this.info = function () {
-  //   return `${this.title} by ${this.author}, ${pages}, ${read} yet.`
-  // }
+  
 }
 
 Book.prototype.toggleReadStatus = function () {
@@ -29,6 +27,7 @@ let tableBody = document.querySelector('.table-body')
 
 const addBookToDom = function () {
   tableBody.innerHTML = ''
+  //if table is empty add an info message
   if (myLibrary.length == 0) {
     const tableRow = document.createElement('tr')
     const tableData = document.createElement('td')
@@ -57,7 +56,6 @@ const addBookToDom = function () {
     readData.textContent = read
 
     let status = read === 'Yes' ? 'green' : 'red'
-
     readData.classList.add(`toggle-read`)
     readData.classList.add(`${status}`)
     readData.setAttribute('data-book-id', id)
@@ -91,6 +89,7 @@ const addBookToDom = function () {
 }
 addBookToDom()
 
+//popup
 const dialog = document.querySelector('dialog')
 const addBtn = document.querySelector('.add-btn')
 const closeBtn = document.querySelector('.close-btn')
@@ -114,6 +113,7 @@ function handleSubmit(bookId) {
 
   let uuid = crypto.randomUUID()
 
+  // checking if this is am existing book, if not add this new book to library
   if (bookId) {
     const book = myLibrary.find((book) => book.id === bookId)
     if (book) {
@@ -161,6 +161,7 @@ tableBody.addEventListener('click', (e) => {
     dialog.showModal()
   }
 
+  //toggle read
   if (e.target.classList.contains(`toggle-read`)) {
     const book = myLibrary.find((book) => book.id === bookId)
     if (book) {
@@ -170,9 +171,4 @@ tableBody.addEventListener('click', (e) => {
   }
 })
 
-// const readButton = document.querySelector('.toggle-read')
 
-// readButton.addEventListener('click', (e) => {
-//   console.log("ysdfsdf");
-
-// })

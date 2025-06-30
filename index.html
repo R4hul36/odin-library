@@ -13,21 +13,37 @@
       <dialog>
         <h2>Enter your Book details</h2>
         <form action="" class="form">
-          <label for="title">Book Title</label>
-          <input type="text" id="title" name="title" required />
-          <label for="author">Author</label>
-          <input type="text" id="author" name="author" />
-          <label for="pages">Pages</label>
-          <input type="number" name="pages" id="pages" />
-          <label for="read">Did you read this book?</label>
-          <select name="read" id="read">
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-          <button type="submit">Submit</button>
+          <div class="form-fields">
+            <label for="title">Book Title</label>
+            <input type="text" id="title" name="title" required />
+          </div>
+          <div class="form-fields">
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" required/>
+          </div>
+          <div class="form-fields">
+            <label for="pages">Pages</label>
+            <input type="number" name="pages" id="pages" required/>
+          </div>
+          <div class="form-fields">
+            <label for="read">Did you read this book?</label>
+            <select name="read" id="read">
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+          <div class="form-fields">
+            <button type="submit">Submit</button>
+          </div>
+          
+          <div class="form-fields">
+            <button class="close-btn" autofocus>Close</button>
+          </div>
+
+          
         </form>
 
-        <button class="close-btn" autofocus>Close</button>
+        
       </dialog>
 
       <button class="add-btn">Add Book</button>
