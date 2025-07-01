@@ -9,10 +9,10 @@ body {
   font-family: sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
   margin-top: 20px;
 }
-
 
 .main {
   display: flex;
@@ -23,8 +23,15 @@ h1, h2 {
   margin-top: 30px;
 }
 
+button {
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
 .add-btn {
   padding: 0.6rem 2rem;
+  background-color: rgb(39, 39, 114);
 }
 
 /* table */
@@ -35,10 +42,7 @@ table {
   font-family: sans-serif;
   font-size: 0.9rem;
   letter-spacing: 1px;
-
 }
-
-
 
 th,
 td {
@@ -51,14 +55,12 @@ tr {
 }
 
 tbody tr:nth-child(odd) {
-  background-color: rgb(223, 223, 223);
+  background-color: rgb(230, 230, 230);
 }
 
 tbody > p {
   text-align: center;
 }
-
-
 
 /* dialog */
 dialog {
@@ -79,10 +81,10 @@ dialog {
 .form-fields {
   display: flex;
   justify-content: space-between;
-  
 }
 
-.form-fields > input {
+.form-fields > input,
+.form-fields > select {
   width: 200px;
   padding: 0.3rem;
 }
@@ -91,14 +93,45 @@ dialog {
   align-self: center;
 }
 
+.submit-btn,
+.close-btn {
+  padding: 0.5rem 1.2rem;
+  margin-top: 30px;
+  color: white;
+  border: none;
+}
+
+.submit-btn {
+  background-color: green;
+}
+
+.close-btn {
+  background-color: red;
+}
 /* .table-container {
   margin: auto;
 } */
 
 .green {
-  color: green;
+  background-color: green;
+  padding: 0.5rem 1rem;
 }
 
 .red {
-  color: red;
+  background-color: grey;
+  padding: 0.5rem 1.15rem;
+}
+
+.edit,
+.delete {
+  padding: 0.5rem 1.15rem;
+}
+
+.edit {
+  background-color: blue;
+  margin-right: 20px;
+}
+
+.delete {
+  background-color: red;
 }

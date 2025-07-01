@@ -9,7 +9,6 @@ function Book(title, author, pages, read, id) {
   this.pages = pages
   this.read = read
   this.id = id
-  
 }
 
 Book.prototype.toggleReadStatus = function () {
@@ -35,8 +34,13 @@ const addBookToDom = function () {
     tableRow.appendChild(tableData)
     tableData.colSpan = '6'
     tableBody.appendChild(tableRow)
+  } else {
+    createNewBookRow()
   }
+}
+addBookToDom()
 
+const createNewBookRow = function () {
   return myLibrary.forEach((book, index) => {
     const { author, id, pages, read, title } = book
     console.log(read)
@@ -53,12 +57,15 @@ const addBookToDom = function () {
     pagesData.textContent = pages
 
     const readData = document.createElement('td')
-    readData.textContent = read
+    const statusBtn = document.createElement('button')
 
     let status = read === 'Yes' ? 'green' : 'red'
-    readData.classList.add(`toggle-read`)
-    readData.classList.add(`${status}`)
-    readData.setAttribute('data-book-id', id)
+    statusBtn.textContent = status === 'green' ? 'Yes' : 'No'
+    readData.appendChild(statusBtn)
+
+    statusBtn.classList.add(`toggle-read`)
+    statusBtn.classList.add(`${status}`)
+    statusBtn.setAttribute('data-book-id', id)
 
     const titleData = document.createElement('td')
     titleData.textContent = title
@@ -87,7 +94,6 @@ const addBookToDom = function () {
     tableBody.appendChild(tableRow)
   })
 }
-addBookToDom()
 
 //popup
 const dialog = document.querySelector('dialog')
@@ -170,5 +176,3 @@ tableBody.addEventListener('click', (e) => {
     }
   }
 })
-
-

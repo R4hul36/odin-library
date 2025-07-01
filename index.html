@@ -11,7 +11,7 @@
     <h1>My Library</h1>
     <div class="main">
       <dialog>
-        <h2>Enter your Book details</h2>
+        <h2>Book details</h2>
         <form action="" class="form">
           <div class="form-fields">
             <label for="title">Book Title</label>
@@ -19,31 +19,24 @@
           </div>
           <div class="form-fields">
             <label for="author">Author</label>
-            <input type="text" id="author" name="author" required/>
+            <input type="text" id="author" name="author" required />
           </div>
           <div class="form-fields">
             <label for="pages">Pages</label>
-            <input type="number" name="pages" id="pages" required/>
+            <input type="number" name="pages" id="pages" required />
           </div>
           <div class="form-fields">
-            <label for="read">Did you read this book?</label>
+            <label for="read">Read</label>
             <select name="read" id="read">
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
           </div>
-          <div class="form-fields">
-            <button type="submit">Submit</button>
-          </div>
-          
-          <div class="form-fields">
+          <div class="form-btn">
+            <button type="submit" class="submit-btn">Submit</button>
             <button class="close-btn" autofocus>Close</button>
           </div>
-
-          
         </form>
-
-        
       </dialog>
 
       <button class="add-btn">Add Book</button>
