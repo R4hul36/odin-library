@@ -7,6 +7,7 @@
 body {
   text-align: center;
   font-family: sans-serif;
+  /* background-color: aliceblue; */
 }
 
 h1,
@@ -31,7 +32,12 @@ button {
 
 .add-btn {
   padding: 0.6rem 2rem;
-  background-color: rgb(39, 39, 114);
+  background-color: rgb(36, 160, 237);
+  font-size: 1rem;
+}
+
+.add-btn:hover {
+  opacity: 0.8;
 }
 
 /* table */
@@ -44,10 +50,14 @@ table {
   letter-spacing: 1px;
 }
 
+th {
+  font-size: 1rem;
+}
+
 th,
 td {
   border: 1px solid rgb(160 160 160);
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.8rem;
 }
 
 tr {
@@ -55,7 +65,7 @@ tr {
 }
 
 tbody tr:nth-child(odd) {
-  background-color: rgb(230, 230, 230);
+  background-color: #f1f1f1;
 }
 
 tbody > p {
@@ -87,7 +97,10 @@ dialog {
 .form-fields > select {
   width: 200px;
   padding: 0.3rem;
+  font-size: 0.9rem;
 }
+
+
 
 .form-fields > label {
   align-self: center;
@@ -114,17 +127,17 @@ dialog {
 
 .green {
   background-color: green;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 1rem;
 }
 
 .red {
   background-color: grey;
-  padding: 0.5rem 1.15rem;
+  padding: 0.4rem 1.15rem;
 }
 
 .edit,
 .delete {
-  padding: 0.5rem 1.15rem;
+  padding: 0.4rem 1.15rem;
 }
 
 .edit {
@@ -135,3 +148,60 @@ dialog {
 .delete {
   background-color: red;
 }
+
+
+/* dialog animation */
+/* Not my code used mdn example code */
+
+dialog {
+  animation: fade-out 0.7s ease-out;
+}
+
+dialog:open {
+  animation: fade-in 0.7s ease-out;
+}
+
+dialog:open::backdrop {
+  animation: backdrop-fade-in 0.7s ease-out forwards;
+}
+
+/* Animation keyframes */
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+    display: block;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    transform: scaleY(1);
+    display: block;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+  }
+}
+
+@keyframes backdrop-fade-in {
+  0% {
+    background-color: rgb(0 0 0 / 0%);
+  }
+
+  100% {
+    background-color: rgb(0 0 0 / 25%);
+  }
+}
+

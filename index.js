@@ -1,5 +1,6 @@
 let myLibrary = []
 
+//Book constructor
 function Book(title, author, pages, read, id) {
   if (!new.target) {
     throw Error('You should use the "new" operator to call the constructor')
@@ -18,7 +19,6 @@ Book.prototype.toggleReadStatus = function () {
 function addBookToLibrary(title, author, pages, read) {
   let uuid = crypto.randomUUID()
   const book = new Book(title, author, pages, read, uuid)
-  //console.log(theHobbit.info())
   myLibrary.push(book)
 }
 
@@ -31,6 +31,8 @@ const addBookToDom = function () {
     const tableRow = document.createElement('tr')
     const tableData = document.createElement('td')
     tableData.textContent = 'There are no books to show yet...'
+    tableData.style.fontStyle = 'italic';
+    tableData.style.textAlign = 'center';
     tableRow.appendChild(tableData)
     tableData.colSpan = '6'
     tableBody.appendChild(tableRow)
@@ -51,7 +53,7 @@ const createNewBookRow = function () {
     authorData.textContent = author
 
     const idData = document.createElement('td')
-    idData.textContent = index + 1
+    idData.textContent = `${index + 1}.`
 
     const pagesData = document.createElement('td')
     pagesData.textContent = pages
@@ -65,6 +67,7 @@ const createNewBookRow = function () {
 
     statusBtn.classList.add(`toggle-read`)
     statusBtn.classList.add(`${status}`)
+    statusBtn.setAttribute('title', 'click to change the status')
     statusBtn.setAttribute('data-book-id', id)
 
     const titleData = document.createElement('td')
