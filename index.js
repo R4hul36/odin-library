@@ -32,7 +32,6 @@ const addBookToDom = function () {
     const tableData = document.createElement('td')
     tableData.textContent = 'There are no books to show yet...'
     tableData.style.fontStyle = 'italic';
-    tableData.style.textAlign = 'center';
     tableRow.appendChild(tableData)
     tableData.colSpan = '6'
     tableBody.appendChild(tableRow)
